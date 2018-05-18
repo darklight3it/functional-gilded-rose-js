@@ -34,6 +34,11 @@ Notes:
 
 const createItem = (name, sell_in, quality) => ({name, sell_in, quality});
 
+/*
+* As you can see this code should be moved to the tests. The items object is done also through
+* an assignment using the 'impure' function push. Pushing is like an assignment we reassign the
+* the same object again and again mutating the same reference. 
+*/
 
 var items = [];
 
