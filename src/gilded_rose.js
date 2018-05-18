@@ -28,6 +28,10 @@ Notes:
 - The last test is red because it is not yet implemented (as requested by the kata specs).
 */
 
+/*
+* Let's transform this constructor in a factory function
+*/
+
 function Item(name, sell_in, quality) {
   this.name = name;
   this.sell_in = sell_in;
