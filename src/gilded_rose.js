@@ -36,7 +36,9 @@ const times = (iterations, fn, argument) =>
 /*
 * Now before diving in this if madness let's do some preparatory simple refactorings
 * 1 - Assure update_quality have appropriate arguments and returns.
-* 2 - Rewrite tests and times function accordingly
+* 2 - Rewrite tests and times function accordingly.
+* 3 - Return a new array avoiding the for loop (the single item are unfortunately the same reference).
+* 4 - Break down the array loop from the single element update.
 */
 
 const update_quality = (items) => {
