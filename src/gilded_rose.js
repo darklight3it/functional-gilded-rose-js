@@ -28,24 +28,7 @@ Notes:
 - The last test is red because it is not yet implemented (as requested by the kata specs).
 */
 
-/*
-* Let's transform this constructor in a factory function
-*/
-
 const createItem = (name, sell_in, quality) => ({name, sell_in, quality});
-
-/*
-* Now a note on the tests. As an utility to easily test our main function "update_quality",
-* I created a simple generic function called "times" in order to iterate it as much as I want.
-* The function accepts the number of iterations, a generic function and the eventual argument of the function.
-*
-* For/while loops are normally not permitted in "real functional languages", because they always involve
-* some kind of assingment (state) . In this case the problematic part is the line "iterations--"
-* (iterations = iterations -1).
-*  
-* Provided the mutated variable remain in the loop scope we can assume the loops respects the functional paradigm. 
-* Nonetheless I will refactor this simple function in order to demonstrate how this situations are handled in FP
-*/
 
 const times = (iterations, fn, argument) => {
   if (iterations <= 0) {
@@ -55,6 +38,12 @@ const times = (iterations, fn, argument) => {
   fn(argument);
   times(iterations - 1, fn, argument);
 };
+
+/*
+* Now before diving in this if madness let's do some preparatory simple refactorings
+* 1 - Assure update_quality have appropriate arguments and returns.
+* 2 - Rewrite tests and times function accordingly
+*/
 
 function update_quality(items) {
   for (var i = 0; i < items.length; i++) {
