@@ -47,12 +47,14 @@ const createItem = (name, sell_in, quality) => ({name, sell_in, quality});
 * Nonetheless I will refactor this simple function in order to demonstrate how this situations are handled in FP
 */
 
-function times(iterations, fn, argument) {
-  while (iterations > 0) {
-    fn(argument);
-    iterations--;
+const times = (iterations, fn, argument) => {
+  if (iterations <= 0) {
+    return;
   }
-}
+  
+  fn(argument);
+  times(iterations - 1, fn, argument);
+};
 
 function update_quality(items) {
   for (var i = 0; i < items.length; i++) {
