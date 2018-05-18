@@ -32,20 +32,17 @@ Notes:
 * Let's transform this constructor in a factory function
 */
 
-function Item(name, sell_in, quality) {
-  this.name = name;
-  this.sell_in = sell_in;
-  this.quality = quality;
-}
+const createItem = (name, sell_in, quality) => ({name, sell_in, quality});
+
 
 var items = [];
 
-items.push(new Item('+5 Dexterity Vest', 10, 20));
-items.push(new Item('Aged Brie', 2, 0));
-items.push(new Item('Elixir of the Mongoose', 5, 7));
-items.push(new Item('Sulfuras, Hand of Ragnaros', 0, 80));
-items.push(new Item('Backstage passes to a TAFKAL80ETC concert', 15, 20));
-items.push(new Item('Conjured Mana Cake', 3, 6));
+items.push(createItem('+5 Dexterity Vest', 10, 20));
+items.push(createItem('Aged Brie', 2, 0));
+items.push(createItem('Elixir of the Mongoose', 5, 7));
+items.push(createItem('Sulfuras, Hand of Ragnaros', 0, 80));
+items.push(createItem('Backstage passes to a TAFKAL80ETC concert', 15, 20));
+items.push(createItem('Conjured Mana Cake', 3, 6));
 
 function update_quality(items) {
   for (var i = 0; i < items.length; i++) {
@@ -104,4 +101,4 @@ function times(iterations, fn, argument) {
 }
 
 
-export { update_quality, Item, times };
+export { update_quality, createItem, times };

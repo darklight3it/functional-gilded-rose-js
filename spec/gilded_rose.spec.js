@@ -1,4 +1,4 @@
-import { update_quality, times, Item } from '../src/gilded_rose';
+import { update_quality, times, createItem } from '../src/gilded_rose';
 import chai from 'chai';
 
 const assert = chai.assert;
@@ -28,12 +28,12 @@ describe('Gilded Rose', function() {
   beforeEach(() => {
     items = [];
 
-    items.push(new Item('+5 Dexterity Vest', 10, 20));
-    items.push(new Item('Aged Brie', 2, 0));
-    items.push(new Item('Elixir of the Mongoose', 5, 7));
-    items.push(new Item('Sulfuras, Hand of Ragnaros', 0, 80));
-    items.push(new Item('Backstage passes to a TAFKAL80ETC concert', 15, 20));
-    items.push(new Item('Conjured Mana Cake', 3, 6));
+    items.push(createItem('+5 Dexterity Vest', 10, 20));
+    items.push(createItem('Aged Brie', 2, 0));
+    items.push(createItem('Elixir of the Mongoose', 5, 7));
+    items.push(createItem('Sulfuras, Hand of Ragnaros', 0, 80));
+    items.push(createItem('Backstage passes to a TAFKAL80ETC concert', 15, 20));
+    items.push(createItem('Conjured Mana Cake', 3, 6));
 
   });
 
