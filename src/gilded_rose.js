@@ -34,21 +34,6 @@ Notes:
 
 const createItem = (name, sell_in, quality) => ({name, sell_in, quality});
 
-/*
-* As you can see this code should be moved to the tests. The items object is done also through
-* an assignment using the 'impure' function push. Pushing is like an assignment we reassign the
-* the same object again and again mutating the same reference. 
-*/
-
-var items = [];
-
-items.push(createItem('+5 Dexterity Vest', 10, 20));
-items.push(createItem('Aged Brie', 2, 0));
-items.push(createItem('Elixir of the Mongoose', 5, 7));
-items.push(createItem('Sulfuras, Hand of Ragnaros', 0, 80));
-items.push(createItem('Backstage passes to a TAFKAL80ETC concert', 15, 20));
-items.push(createItem('Conjured Mana Cake', 3, 6));
-
 function update_quality(items) {
   for (var i = 0; i < items.length; i++) {
     if (items[i].name != 'Aged Brie' && items[i].name != 'Backstage passes to a TAFKAL80ETC concert') {

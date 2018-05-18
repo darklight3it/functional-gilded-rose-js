@@ -19,22 +19,20 @@ const assert = chai.assert;
  * - "Conjured" items degrade in quality twice as fast as normal items
 */
 
-describe('Gilded Rose', function() {
+describe('Gilded Rose', () => {
   let items;
 
   const qualityNotUpdatedMsg = 'Quality was not updated correctly';
   const sellInNotUpdatedMsg = 'Sell_In was not updated correctly';
 
   beforeEach(() => {
-    items = [];
-
-    items.push(createItem('+5 Dexterity Vest', 10, 20));
-    items.push(createItem('Aged Brie', 2, 0));
-    items.push(createItem('Elixir of the Mongoose', 5, 7));
-    items.push(createItem('Sulfuras, Hand of Ragnaros', 0, 80));
-    items.push(createItem('Backstage passes to a TAFKAL80ETC concert', 15, 20));
-    items.push(createItem('Conjured Mana Cake', 3, 6));
-
+    items = [
+      createItem('+5 Dexterity Vest', 10, 20),
+      createItem('Aged Brie', 2, 0),
+      createItem('Elixir of the Mongoose', 5, 7),
+      createItem('Sulfuras, Hand of Ragnaros', 0, 80),
+      createItem('Backstage passes to a TAFKAL80ETC concert', 15, 20),
+      createItem('Conjured Mana Cake', 3, 6)];
   });
 
   it('should lower sell_in and quality for +5 Dexterity Vest by 1', () => {
@@ -105,7 +103,7 @@ describe('Gilded Rose', function() {
     update_quality(items);
     const item = items.find(x => x.name === 'Conjured Mana Cake');
 
-    assert.equal(2, item.sell_in, sellInNotUpdatedMsg);
+    assert.equal(1, item.sell_in, sellInNotUpdatedMsg);
     assert.equal(4, item.quality, qualityNotUpdatedMsg);
   });
 });
