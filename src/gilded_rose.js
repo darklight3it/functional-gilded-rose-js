@@ -53,7 +53,7 @@ const times = (iterations, fn, argument) =>
 */
 
 const updaters =  {
-  updateQualityBy: (value) => (item) => item.quality + value,
+  updateQualityBy: (value) => (item) =>  item.quality + (item.sell_in - 1 < 0 ? value * 2 : value),
 };
 
 const update_quality = (items) => 
