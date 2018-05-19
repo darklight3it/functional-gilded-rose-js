@@ -28,7 +28,16 @@ Notes:
 - The last test is red because it is not yet implemented (as requested by the kata specs).
 */
 
-const createItem = (name, sell_in, quality) => ({name, sell_in, quality});
+/*
+*  In order to differentiate the logic between the different item we can mark each one of them
+*  with two updater functions (one for quality and one for sell_in). These function should
+*  take an item object and return the new updated quality/sell_in. For now we can default them
+*  to a simple identity function.
+*  Using this strategy makes the update_item function useless (we can directly use create item)
+*/
+
+const createItem = (name, sell_in, quality, qualityUpdater = x => x, sellInUpdater = x => x) => 
+  ({ name, sell_in, quality, qualityUpdater, sellInUpdater });
 
 const times = (iterations, fn, argument) => 
   iterations <= 0 ? argument : times(iterations - 1, fn, fn(argument));
@@ -39,55 +48,12 @@ const times = (iterations, fn, argument) =>
 * if everything is ok.
 */
 
-const update_item = (name, sell_in, quality) => {
-  
-  /* Updating logic
-  if (name != 'Aged Brie' && name != 'Backstage passes to a TAFKAL80ETC concert') {
-    if (quality > 0) {
-      if (name != 'Sulfuras, Hand of Ragnaros') {
-        quality = quality - 1;
-      }
-    }
-  } else {
-    if (quality < 50) {
-      quality = quality + 1;
-      if (name == 'Backstage passes to a TAFKAL80ETC concert') {
-        if (sell_in < 11) {
-          if (quality < 50) {
-            quality = quality + 1;
-          }
-        }
-        if (sell_in < 6) {
-          if (quality < 50) {
-            quality = quality + 1;
-          }
-        }
-      }
-    }
-  }
-  if (name != 'Sulfuras, Hand of Ragnaros') {
-    sell_in = sell_in - 1;
-  }
-  if (sell_in < 0) {
-    if (name != 'Aged Brie') {
-      if (name != 'Backstage passes to a TAFKAL80ETC concert') {
-        if (quality > 0) {
-          if (name != 'Sulfuras, Hand of Ragnaros') {
-            quality = quality - 1;
-          }
-        }
-      } else {
-        quality = quality - quality;
-      }
-    } else {
-      if (quality < 50) {
-        quality = quality + 1;
-      }
-    }
-  }*/
-  return createItem(name, sell_in, quality);
-};
-
-const update_quality = (items) => items.map(item => update_item(item.name, item.sell_in, item.quality));
+const update_quality = (items) => 
+  items.map(item => 
+    createItem(item.name, 
+      item.sellInUpdater(item), 
+      item.qualityUpdater(item), 
+      item.qualityUpdater, 
+      item.sellInUpdater));
 
 export { update_quality, createItem, times };
