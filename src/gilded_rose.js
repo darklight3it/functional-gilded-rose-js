@@ -47,15 +47,15 @@ const times = (iterations, fn, argument) =>
 
 
 /* 
-* Every item quality should not degrade below 0. One idea is to compose the updateQualityBy with a function
-* that returns 0 if the result of updateQualityBy is less than 0.
-* Let's implement it and use a pipe function (provided by Ramda) to concatenate the two.
-* Check the tests to see how they are used.
+* Now we implement the "aged brie" item which increase the quality each day. We can reuse the updateQualityBy
+* function but the kata says that an item should not have its quality above 50. Let's implement another
+* limit.
 */
 
 const updaters =  {
   updateQualityBy: (value) => (item) =>  item.quality + (item.sell_in - 1 < 0 ? value * 2 : value),
   setMinLimit: (value) => Math.max(value, 0),
+  setMaxLimit: (value) => Math.min(value, 50),
 };
 
 const update_quality = (items) => 
