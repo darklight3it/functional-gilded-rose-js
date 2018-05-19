@@ -36,17 +36,25 @@ Notes:
 *  Using this strategy makes the update_item function useless (we can directly use create item)
 */
 
-const createItem = (name, sell_in, quality, qualityUpdater = x => x, sellInUpdater = x => x) => 
+const createItem = (name, sell_in, quality, qualityUpdater = x => x, sellInUpdater = x => x.sell_in - 1) => 
   ({ name, sell_in, quality, qualityUpdater, sellInUpdater });
 
 const times = (iterations, fn, argument) => 
   iterations <= 0 ? argument : times(iterations - 1, fn, fn(argument));
 
-/*
-* We cannot refactor the update logic progressively, so we will comment the old logic entirely. 
-* We'll implement each type one at a time following the requirements and test to see 
-* if everything is ok.
+
+/* The logic of each updater will be implemented in an Updater object, in which we can define every item
+ * strategy:
+ * 1 - Let's try regular item. Every day their quality decrease by 1 unless their sell_in value is less than 0
+ * in which case the quality decrease by 2.
+ * 2 - We will use them in the test file (when items are created). Check how it is used in tests
+ * 3 - Currying is used to generalize the updater.
+ * 4 - we default the sell_in updater to decrease by 1 because sell_in standardly drops down
 */
+
+const updaters =  {
+  updateQualityBy: (value) => (item) => item.quality + value,
+};
 
 const update_quality = (items) => 
   items.map(item => 
@@ -56,4 +64,4 @@ const update_quality = (items) =>
       item.qualityUpdater, 
       item.sellInUpdater));
 
-export { update_quality, createItem, times };
+export { update_quality, createItem, times, updaters };

@@ -1,4 +1,4 @@
-import { update_quality, times, createItem } from '../src/gilded_rose';
+import { update_quality, times, createItem, updaters } from '../src/gilded_rose';
 import chai from 'chai';
 
 const assert = chai.assert;
@@ -27,7 +27,7 @@ describe('Gilded Rose', () => {
 
   beforeEach(() => {
     items = [
-      createItem('+5 Dexterity Vest', 10, 20),
+      createItem('+5 Dexterity Vest', 10, 20, updaters.updateQualityBy(-1)),
       createItem('Aged Brie', 2, 0),
       createItem('Elixir of the Mongoose', 5, 7),
       createItem('Sulfuras, Hand of Ragnaros', 0, 80),
