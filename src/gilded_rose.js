@@ -47,15 +47,15 @@ const times = (iterations, fn, argument) =>
 
 
 /* 
-* Now we implement the "aged brie" item which increase the quality each day. We can reuse the updateQualityBy
-* function but the kata says that an item should not have its quality above 50. Let's implement another
-* limit.
+* The "Sulfuras" item which do not change both sell_in and quality property is now a trivial consequence of what we have done since now.
 */
 
 const updaters =  {
   updateQualityBy: (value) => (item) =>  item.quality + (item.sell_in - 1 < 0 ? value * 2 : value),
   setMinLimit: (value) => Math.max(value, 0),
   setMaxLimit: (value) => Math.min(value, 50),
+  noQualityUpdate: (item) => item.quality,
+  noSellInUpdate: (item) => item.sell_in,
 };
 
 const update_quality = (items) => 
