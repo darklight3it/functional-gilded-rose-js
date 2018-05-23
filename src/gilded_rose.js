@@ -47,7 +47,7 @@ const times = (iterations, fn, argument) =>
 
 
 /* 
-* [Optional] In a more functional fashion, we can use ramda cond.
+* Here we finish with the latest super trivial item type ("Conjured").
 */
 
 const updaters =  {

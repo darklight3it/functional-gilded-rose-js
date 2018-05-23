@@ -32,7 +32,7 @@ describe('Gilded Rose', () => {
       createItem('Elixir of the Mongoose', 5, 7, pipe(updaters.updateQualityBy(-1), updaters.setMinLimit, updaters.setMaxLimit)),
       createItem('Sulfuras, Hand of Ragnaros', 0, 80, updaters.noQualityUpdate, updaters.noSellInUpdate),
       createItem('Backstage passes to a TAFKAL80ETC concert', 15, 20, pipe(updaters.backStageQualityUpdater, updaters.setMinLimit, updaters.setMaxLimit)),
-      createItem('Conjured Mana Cake', 3, 6)];
+      createItem('Conjured Mana Cake', 3, 6, pipe(updaters.updateQualityBy(-2), updaters.setMinLimit, updaters.setMaxLimit))];
   });
 
   it('should lower sell_in and quality for +5 Dexterity Vest by 1', () => {
