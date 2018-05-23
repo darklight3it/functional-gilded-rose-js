@@ -47,7 +47,8 @@ const times = (iterations, fn, argument) =>
 
 
 /* 
-* The "Sulfuras" item which do not change both sell_in and quality property is now a trivial consequence of what we have done since now.
+* The "Backsstage Pass" is a little more difficult. It has a lot of if else block that cannot be reduced easily.
+* Let's try!
 */
 
 const updaters =  {
@@ -56,6 +57,23 @@ const updaters =  {
   setMaxLimit: (value) => Math.min(value, 50),
   noQualityUpdate: (item) => item.quality,
   noSellInUpdate: (item) => item.sell_in,
+  backStageQualityUpdater: (item) => {
+    const sellIn = item.sell_in;
+
+    if (sellIn < 1) {
+      return 0;
+    }
+
+    if (sellIn < 6) {
+      return item.quality + 3;
+    }
+
+    if (sellIn < 11) {
+      return item.quality + 2;
+    }
+
+    return item.quality + 1;
+  }
 };
 
 const update_quality = (items) => 

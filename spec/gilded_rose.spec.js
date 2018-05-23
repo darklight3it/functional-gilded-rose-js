@@ -31,7 +31,7 @@ describe('Gilded Rose', () => {
       createItem('Aged Brie', 2, 0, pipe(updaters.updateQualityBy(1), updaters.setMinLimit, updaters.setMaxLimit)),
       createItem('Elixir of the Mongoose', 5, 7, pipe(updaters.updateQualityBy(-1), updaters.setMinLimit, updaters.setMaxLimit)),
       createItem('Sulfuras, Hand of Ragnaros', 0, 80, updaters.noQualityUpdate, updaters.noSellInUpdate),
-      createItem('Backstage passes to a TAFKAL80ETC concert', 15, 20),
+      createItem('Backstage passes to a TAFKAL80ETC concert', 15, 20, pipe(updaters.backStageQualityUpdater, updaters.setMinLimit, updaters.setMaxLimit)),
       createItem('Conjured Mana Cake', 3, 6)];
   });
 
