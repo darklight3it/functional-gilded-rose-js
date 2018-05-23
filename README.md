@@ -1,18 +1,22 @@
-If you want to get cracking on the JavaScript source then do this:
+## Introduction 
 
-    git clone git@github.com:guyroyse/gilded-rose-javascript.git
+Hi all !!!
+
+This repo is part of a presentation called **Functional Style Programming 101 - The Gilded Kata Example** in which I present some notions about Functional Style Programming.
+
+In particular I will demonstrate the use of this programming technique executing the famous Gilded Rose Refactoring Kata in javascript ES 6.
+
+The initial repo is courtesy of @guyrose ```Gilded Rose Javascript Kata```, that you can find [here](https://github.com/guyroyse/gilded-rose-javascript)
+
+
+## The Kata
+
 
 Hi and welcome to team Gilded Rose.
 
-As you know, we are a small inn with a prime location in a prominent city ran
-by a friendly innkeeper named Allison.  We also buy and sell only the finest
-goods. Unfortunately, our goods are constantly degrading in quality as they
-approach their sell by date.
+As you know, we are a small inn with a prime location in a prominent city ran by a friendly innkeeper named Allison.  We also buy and sell only the finest goods. Unfortunately, our goods are constantly degrading in quality as they approach their sell by date.
 
-We have a system in place that updates our inventory for us. It was developed
-by a no-nonsense type named Leeroy, who has moved on to new adventures. Your
-task is to add the new feature to our system so that we can begin selling a
-new category of items.
+We have a system in place that updates our inventory for us. It was developed by a no-nonsense type named Leeroy, who has moved on to new adventures. Your task is to add the new feature to our system so that we can begin selling a new category of items.
 
 First an introduction to our system:
 
