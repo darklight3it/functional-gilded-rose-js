@@ -36,31 +36,31 @@ describe('Gilded Rose', () => {
   });
 
   it('should lower sell_in and quality for +5 Dexterity Vest by 1', () => {
-    update_quality(items);
-    const item = items.find(x => x.name === '+5 Dexterity Vest');
+    const result = update_quality(items);
+    const item = result.find(x => x.name === '+5 Dexterity Vest');
 
     assert.equal(19, item.quality, qualityNotUpdatedMsg);
     assert.equal(9, item.sell_in, sellInNotUpdatedMsg);
   });
 
   it('Once the sell_in days is less then zero, quality degrades twice as fast', () => {
-    times(11, update_quality, items);
-    const item = items.find(x => x.name === '+5 Dexterity Vest');
+    const result = times(11, update_quality, items);
+    const item = result.find(x => x.name === '+5 Dexterity Vest');
 
     assert.equal(8, item.quality, qualityNotUpdatedMsg);
     assert.equal(-1, item.sell_in, sellInNotUpdatedMsg);
   });
 
   it('The quality of an item is never negative', () => {
-    times(23, update_quality, items);
-    const item = items.find(x => x.name === '+5 Dexterity Vest');
+    const result = times(23, update_quality, items);
+    const item = result.find(x => x.name === '+5 Dexterity Vest');
 
     assert.equal(0, item.quality, qualityNotUpdatedMsg);
   });
 
   it('"Aged Brie" actually increases in quality the older it gets', () => {
-    update_quality(items);
-    const item = items.find(x => x.name === 'Aged Brie');
+    const result = update_quality(items);
+    const item = result.find(x => x.name === 'Aged Brie');
 
     assert.equal(1, item.quality, qualityNotUpdatedMsg);
   });
@@ -68,17 +68,16 @@ describe('Gilded Rose', () => {
   
   it('The quality of an item is never over 50 (except for artifact)', () => {
   
-    times(50, update_quality, items);
+    const result = times(50, update_quality, items);
 
-    const item = items.find(x => x.name === 'Aged Brie');
+    const item = result.find(x => x.name === 'Aged Brie');
 
-    assert.equal(50, item.quality, qualityNotUpdatedMsg)
+    assert.equal(50, item.quality, qualityNotUpdatedMsg);
   });
 
-
   it('"Sulfuras", being a legendary item, never has to be sold nor does it decrease in quality', () => {
-    update_quality(items);
-    const item = items.find(x => x.name === 'Sulfuras, Hand of Ragnaros');
+    const result = update_quality(items);
+    const item = result.find(x => x.name === 'Sulfuras, Hand of Ragnaros');
 
     assert.equal(0, item.sell_in, sellInNotUpdatedMsg);
     assert.equal(80, item.quality, qualityNotUpdatedMsg);
@@ -86,24 +85,24 @@ describe('Gilded Rose', () => {
 
   it('"Backstage passes", like aged brie, increases in quality as it\'s sell_in value decreases; \
   quality increases by 2 when there are 10 days or less and by 3 when there are 5 days or less but quality drops to 0 after the concert', () => {
-    times(15, update_quality, items);
+    const result = times(15, update_quality, items);
 
-    const item = items.find(x => x.name === 'Backstage passes to a TAFKAL80ETC concert');
+    const item = result.find(x => x.name === 'Backstage passes to a TAFKAL80ETC concert');
 
     assert.equal(50, item.quality, qualityNotUpdatedMsg);
 
-    times(16, update_quality, items)
+    const anotherResult = times(16, update_quality, items);
 
-    const item2 = items.find(x => x.name === 'Backstage passes to a TAFKAL80ETC concert');
+    const item2 = anotherResult.find(x => x.name === 'Backstage passes to a TAFKAL80ETC concert');
 
     assert.equal(0, item2.quality, qualityNotUpdatedMsg);
   });
 
   it('"Conjured" items degrade in quality twice as fast as normal items.', () => {
-    update_quality(items);
-    const item = items.find(x => x.name === 'Conjured Mana Cake');
+    const result = update_quality(items);
+    const item = result.find(x => x.name === 'Conjured Mana Cake');
 
-    assert.equal(1, item.sell_in, sellInNotUpdatedMsg);
+    assert.equal(2, item.sell_in, sellInNotUpdatedMsg);
     assert.equal(4, item.quality, qualityNotUpdatedMsg);
   });
 });

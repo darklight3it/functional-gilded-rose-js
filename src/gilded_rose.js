@@ -30,14 +30,8 @@ Notes:
 
 const createItem = (name, sell_in, quality) => ({name, sell_in, quality});
 
-const times = (iterations, fn, argument) => {
-  if (iterations <= 0) {
-    return;
-  }
-  
-  fn(argument);
-  times(iterations - 1, fn, argument);
-};
+const times = (iterations, fn, argument) => 
+  iterations <= 0 ? argument : times(iterations - 1, fn, fn(argument));
 
 /*
 * Now before diving in this if madness let's do some preparatory simple refactorings
@@ -45,7 +39,7 @@ const times = (iterations, fn, argument) => {
 * 2 - Rewrite tests and times function accordingly
 */
 
-function update_quality(items) {
+const update_quality = (items) => {
   for (var i = 0; i < items.length; i++) {
     if (items[i].name != 'Aged Brie' && items[i].name != 'Backstage passes to a TAFKAL80ETC concert') {
       if (items[i].quality > 0) {
@@ -91,6 +85,8 @@ function update_quality(items) {
       }
     }
   }
-}
+
+  return items;
+};
 
 export { update_quality, createItem, times };
