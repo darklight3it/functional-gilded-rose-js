@@ -39,55 +39,56 @@ const times = (iterations, fn, argument) =>
 * 2 - Rewrite tests and times function accordingly.
 * 3 - Return a new array avoiding the for loop (the single item are unfortunately the same reference).
 * 4 - Break down the array loop from the single element update.
+* 5 - Ensure new item are create every time (avoid mutating item)
 */
 
-const update_item = (item) => {
-  if (item.name != 'Aged Brie' && item.name != 'Backstage passes to a TAFKAL80ETC concert') {
-    if (item.quality > 0) {
-      if (item.name != 'Sulfuras, Hand of Ragnaros') {
-        item.quality = item.quality - 1;
+const update_item = (name, sell_in, quality) => {
+  if (name != 'Aged Brie' && name != 'Backstage passes to a TAFKAL80ETC concert') {
+    if (quality > 0) {
+      if (name != 'Sulfuras, Hand of Ragnaros') {
+        quality = quality - 1;
       }
     }
   } else {
-    if (item.quality < 50) {
-      item.quality = item.quality + 1;
-      if (item.name == 'Backstage passes to a TAFKAL80ETC concert') {
-        if (item.sell_in < 11) {
-          if (item.quality < 50) {
-            item.quality = item.quality + 1;
+    if (quality < 50) {
+      quality = quality + 1;
+      if (name == 'Backstage passes to a TAFKAL80ETC concert') {
+        if (sell_in < 11) {
+          if (quality < 50) {
+            quality = quality + 1;
           }
         }
-        if (item.sell_in < 6) {
-          if (item.quality < 50) {
-            item.quality = item.quality + 1;
+        if (sell_in < 6) {
+          if (quality < 50) {
+            quality = quality + 1;
           }
         }
       }
     }
   }
-  if (item.name != 'Sulfuras, Hand of Ragnaros') {
-    item.sell_in = item.sell_in - 1;
+  if (name != 'Sulfuras, Hand of Ragnaros') {
+    sell_in = sell_in - 1;
   }
-  if (item.sell_in < 0) {
-    if (item.name != 'Aged Brie') {
-      if (item.name != 'Backstage passes to a TAFKAL80ETC concert') {
-        if (item.quality > 0) {
-          if (item.name != 'Sulfuras, Hand of Ragnaros') {
-            item.quality = item.quality - 1;
+  if (sell_in < 0) {
+    if (name != 'Aged Brie') {
+      if (name != 'Backstage passes to a TAFKAL80ETC concert') {
+        if (quality > 0) {
+          if (name != 'Sulfuras, Hand of Ragnaros') {
+            quality = quality - 1;
           }
         }
       } else {
-        item.quality = item.quality - item.quality;
+        quality = quality - quality;
       }
     } else {
-      if (item.quality < 50) {
-        item.quality = item.quality + 1;
+      if (quality < 50) {
+        quality = quality + 1;
       }
     }
   }
-  return item;
+  return createItem(name, sell_in, quality);
 };
 
-const update_quality = (items) => items.map(update_item);
+const update_quality = (items) => items.map(item => update_item(item.name, item.sell_in, item.quality));
 
 export { update_quality, createItem, times };
