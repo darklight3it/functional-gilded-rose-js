@@ -34,15 +34,14 @@ const times = (iterations, fn, argument) =>
   iterations <= 0 ? argument : times(iterations - 1, fn, fn(argument));
 
 /*
-* Now before diving in this if madness let's do some preparatory simple refactorings
-* 1 - Assure update_quality have appropriate arguments and returns.
-* 2 - Rewrite tests and times function accordingly.
-* 3 - Return a new array avoiding the for loop (the single item are unfortunately the same reference).
-* 4 - Break down the array loop from the single element update.
-* 5 - Ensure new item are create every time (avoid mutating item)
+* We cannot refactor the update logic progressively, so we will comment the old logic entirely. 
+* We'll implement each type one at a time following the requirements and test to see 
+* if everything is ok.
 */
 
 const update_item = (name, sell_in, quality) => {
+  
+  /* Updating logic
   if (name != 'Aged Brie' && name != 'Backstage passes to a TAFKAL80ETC concert') {
     if (quality > 0) {
       if (name != 'Sulfuras, Hand of Ragnaros') {
@@ -85,7 +84,7 @@ const update_item = (name, sell_in, quality) => {
         quality = quality + 1;
       }
     }
-  }
+  }*/
   return createItem(name, sell_in, quality);
 };
 
