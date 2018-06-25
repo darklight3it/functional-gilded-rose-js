@@ -1,0 +1,47 @@
+{
+  "name": "gildedrose",
+  "version": "0.0.1",
+  "description": "Gilded Rose Kata",
+  "main": "src/gilded_rose.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "mocha \"spec/*.js\" --compilers js:babel-core/register"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/darklight3it/GildedRose.git"
+  },
+  "author": "Darklight3it",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/darklight3it/GildedRose/issues"
+  },
+  "homepage": "https://github.com/darklight3it/GildedRose#readme",
+  "devDependencies": {
+    "@types/chai": "^4.1.3",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.3",
+    "babel-preset-env": "^1.6.1",
+    "chai": "^4.1.2",
+    "eslint": "^4.19.1",
+    "eslint-config-fbjs": "^2.0.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-babel": "^5.1.0",
+    "eslint-plugin-flowtype": "^2.46.3",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-react": "^7.7.0",
+    "eslint-plugin-relay": "0.0.21",
+    "mocha": "^5.2.0",
+    "prettier": "^1.12.1"
+  },
+  "quokka": {
+    "babel": true
+  },
+  "dependencies": {
+    "ramda": "^0.25.0"
+  }
+}
