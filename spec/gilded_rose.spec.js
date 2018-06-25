@@ -94,7 +94,7 @@ describe('Gilded Rose', function() {
 
     assert.equal(50, item.quality, qualityNotUpdatedMsg);
 
-    times(15, update_quality, items)
+    times(16, update_quality, items)
 
     const item2 = items.find(x => x.name === 'Backstage passes to a TAFKAL80ETC concert');
 
